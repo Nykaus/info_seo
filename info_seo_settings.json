@@ -1,0 +1,41 @@
+{
+	// 
+	"GetRef" :{
+		"visible" : {
+			"title": true 
+			,"description": true 
+			,"canonical"  : true 
+			,"hn": {
+				"format" : 
+				{
+					"in_line"       : true 
+					,"with_content" : true 
+				} 
+			}
+		}
+	},
+
+	"GetUrl" : {
+		"domain":{
+			"visible" : true 
+			,"exception" : [
+				"tel:"
+				,"mailto:"
+				,"http[s]?\\:\\/\\/"
+			] 
+		}, 
+		"url" : 
+		{
+			"delete": [
+				"facebook"
+				,"javascript:[.*]?"
+				,"(.*)\\.(ico|jpg|css)[\\?.*]?"
+			], 
+			"clean" : [
+				"#(.)*"
+				,"\\$\\(this\\)\\.value\\;\\}"
+				,"tel:"
+			] 
+		}
+	}
+}

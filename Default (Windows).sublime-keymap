@@ -1,0 +1,6 @@
+[	 
+	{ "keys": ["ctrl+alt+w"], "command": "open_web"} 	
+	,{ "keys": ["ctrl+alt+l"], "command": "get_url"}	 
+	,{ "keys": ["ctrl+alt+m"], "command": "get_ref"} 
+	,{ "keys": ["ctrl+alt+g"], "command": "get_google"}
+]

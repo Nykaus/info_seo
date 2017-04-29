@@ -1,0 +1,19 @@
+[    
+    {
+        "caption": "Info SEO > ouvrir le naviguateur web sur les urls selectionner",
+        "command": "open_web"
+    }, 
+    {
+        "caption": "Info SEO > recherche la/les selection sur un moteur de recherche",
+        "command": "get_google"
+    },   
+    {
+        "caption": "Info SEO > Information des balises SEO (title,description,canonical,hn)",
+        "command": "get_ref"
+    },   
+    {
+        "caption": "Info SEO > Afficher toutes les urls de l'url selection",
+        "command": "get_url"
+    }             
+   
+]
