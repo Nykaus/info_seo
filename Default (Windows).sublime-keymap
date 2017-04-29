@@ -3,4 +3,6 @@
 	,{ "keys": ["ctrl+alt+l"], "command": "get_url"}	 
 	,{ "keys": ["ctrl+alt+m"], "command": "get_ref"} 
 	,{ "keys": ["ctrl+alt+g"], "command": "get_google"}
+	,{ "keys": ["ctrl+alt+t"], "command": "get_trends"}
+	,{ "keys": ["ctrl+alt+h"], "command": "get_alyze"}
 ]

@@ -214,4 +214,25 @@ class GetGoogleCommand(sublime_plugin.TextCommand):
 		for laRegion in tabRegion:
 			laRecherche=self.view.substr(laRegion).replace(" ","+")
 			checkUrl="https://www.google.fr/search?q="+laRecherche
+			webbrowser.open(checkUrl)#ctrl+alt+g selection un url
+
+class GetAlyzeCommand(sublime_plugin.TextCommand):
+	def run(self,edit):
+		tabRegion=self.view.sel()
+		for laRegion in tabRegion:
+			laRecherche=self.view.substr(laRegion).replace(" ","+")
+			checkUrl="https://alyze.info/?url="+laRecherche
 			webbrowser.open(checkUrl)
+
+#ctrl+alt+g selection un url
+class GetTrendsCommand(sublime_plugin.TextCommand):
+	def run(self,edit):
+		tabRegion=self.view.sel()
+		lesRecherches=""
+		laRecherche=""
+		for laRegion in tabRegion:
+			laRecherche=self.view.substr(laRegion).replace(" ","+")
+			lesRecherches+=laRecherche+","
+		lesRecherches = lesRecherches.strip(',')	
+		checkUrl="https://trends.google.fr/trends/explore?date=today%201-m&geo=FR&q="+lesRecherches
+		webbrowser.open(checkUrl)
