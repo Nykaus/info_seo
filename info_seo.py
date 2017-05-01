@@ -236,3 +236,4 @@ class GetTrendsCommand(sublime_plugin.TextCommand):
 		lesRecherches = lesRecherches.strip(',')	
 		checkUrl="https://trends.google.fr/trends/explore?date=today%201-m&geo=FR&q="+lesRecherches
 		webbrowser.open(checkUrl)
+
