@@ -3,20 +3,22 @@
 		"visible" : {
 			"title": true 
 			,"description": true 
+			,"og": true 
 			,"canonical"  : true 
 			,"hn": {
-				"format" : 
+				"html" : false
+				,"format" : 
 				{
 					"in_line"       : true 
-					,"with_content" : true 
-				} 
+					,"with_content" : true
+				}
 			}
 		}
 	},
 
 	"GetUrl" : {
 		"domain":{
-			"visible" : true 
+			"visible" : false 
 			,"exception" : [
 				"tel:"
 				,"mailto:"

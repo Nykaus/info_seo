@@ -53,7 +53,7 @@ class GetRefCommand(sublime_plugin.TextCommand):
 						self.view.replace(edit, laRegion,"ERREUR !! Auncun contenu pour URL: '"+checkUrl+"'")
 					else:
 
-						txtResultat="====================================\n"
+						txtResultat="\n====================================\n"
 						txtResultat+=checkUrl+"\n"
 						txtResultat+="====================================\n"
 						
@@ -61,13 +61,21 @@ class GetRefCommand(sublime_plugin.TextCommand):
 							txtResultat+="------Title------\n\n"
 							arrTitle = re.findall(r'<title.*>(.*)</title>', htmlSource)
 							for Title in arrTitle:
-								txtResultat+="\t"+Title+"\n"
+								txtResultat+="\t"+Title.replace("\n","").replace("\r","")+"\n"
 
 						if getref_isvisible["description"]: 
 							txtResultat+="\n------meta Description------\n\n"
-							arrMeta = re.findall(r'<meta[^\"]*name="description"[^\"]*content="([^\"]*)"[^\>]*\/>', htmlSource)
+							arrMeta = re.findall(r'<meta[^\"]*name\=\"description\"[^\"]*content="([^\"]*)"[^\>]*>', htmlSource)
+							
 							for Meta in arrMeta:				
 								txtResultat+="\t"+Meta+"\n"
+
+
+						if getref_isvisible["og"]: 
+							txtResultat+="\n------meta OG------\n\n"
+							arrMeta = re.findall(r'<meta[^\"]*property="og:([^\"]*)"[^\"]*content="([^\"]*)"[^\>]*>', htmlSource)
+							for Meta in arrMeta:				
+								txtResultat+="\t"+Meta[0]+" =>\t\t\t"+Meta[1]+"\n"
 
 						if getref_isvisible["canonical"]: 
 							txtResultat+="\n------Canonical------\n\n"		
@@ -83,18 +91,21 @@ class GetRefCommand(sublime_plugin.TextCommand):
 								txtHN=""
 								for HN in arrHN:
 									txtHN+="\tH"+HN[0]+" - "
-
 								txtResultat+= txtHN.strip(' - ')+"\n\n"
 
-							if getref_isvisible["hn"]["format"]["with_content"]:
+							if getref_isvisible["hn"]["format"]["with_content"]:								
+								#<(.*?)>
 								for HN in arrHN:
 									for nbTab in range(0,int(HN[0])):
 										if nbTab > 0:
 											txtResultat+="\t"
-									txtResultat+="\tH"+HN[0]+" : "+HN[2]+"\n\n"
-							
 
+									if getref_isvisible["hn"]["html"]:
+										txtResultat+="\tH"+HN[0]+" : "+HN[2]+"\n\n"
+									else:
+										txtResultat+="\tH"+HN[0]+" : "+re.sub(r"<(.*?)>","",HN[2]).strip(" ")+"\n\n"
 						self.view.replace(edit, laRegion, txtResultat)
+
 
 #ctrl+alt+l selection un url
 class GetUrlCommand(sublime_plugin.TextCommand):
